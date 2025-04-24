@@ -1,10 +1,12 @@
-//     {
-//     "logo": "./assets/images/logo-devlens.svg",
-//     "name": "DevLens",
-//     "description": "Quickly inspect page layouts and visualize element boundaries.",
-//     "isActive": true
-// }
+//  Toggle light and dark modes
+const toggle_button = document.querySelector('.toggle-mode');
+console.log(toggle_button);
 
+toggle_button.addEventListener('click', () => {
+  //toggle here
+});
+
+// A function to fetch data from Data.json
 async function getCards() {
   try {
     const response = await fetch('data.json');
@@ -14,20 +16,11 @@ async function getCards() {
     console.error('Error fetching JSON: ', error);
   }
 }
-/*<div class="card">
-          <div class="description">
-            <img src="" alt="">
-            <div class="text">
-              <h3>DevLens</h3>
-              <p>Quickly inspect page layouts and visualize element boundaries</p>
-            </div>
-            <div class="action-btns">
-              <button class="remove">Remove</button>
-              <input type="checkbox" name="" id="check">
-            </div>
-          </div>
-        </div>*/
+
+// Grapping the root element for the cards
 const card_container = document.querySelector('.extensions-cards');
+
+// Using the data from the function to creat the cards
 
 getCards().then((cards) => {
   cards.forEach((card) => {
@@ -62,10 +55,18 @@ getCards().then((cards) => {
     button.innerText = 'Remove';
     action_btns.appendChild(button);
 
+    const label = document.createElement('label');
+
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.classList.add('check');
-    action_btns.appendChild(input);
+    input.setAttribute('name', 'active');
+
+    const span = document.createElement('span');
+    span.classList.add('slider');
+    label.appendChild(input);
+    label.appendChild(span);
+    action_btns.appendChild(label);
 
     ext_card.appendChild(description);
     ext_card.appendChild(action_btns);

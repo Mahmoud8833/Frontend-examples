@@ -1,6 +1,6 @@
 @font-face {
     font-family: "NotoSans";
-    src: url(assets/fonts/static/NotoSans-Bold.ttf);
+    src: url(assets/fonts/static/NotoSans-Regular.ttf);
 }
 
 :root {
@@ -37,13 +37,15 @@
 .container {
     background-color: var(--neutral-200);
     width: 100%;
-    /* height: 100vh; */
+    height: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 2rem;
     margin: 0 auto;
+    margin-bottom: 2rem;
+    font-family: var(--font-family);
 }
 
 .container .head {
@@ -55,8 +57,136 @@
     background-color: var(--neutral-0);
     border-radius: 15px;
     padding: 10px;
+    margin-bottom: 2rem;
 }
 
-.container .head .logo {
-    fill: #EBF2FC
+.container .head .toggle-mode {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 10px;
+    background-color: var(--neutral-100);
+    border: none;
+    border-radius: 5px;
+}
+
+.container .main {
+    width: 80%;
+}
+
+.container .main .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btn,
+.remove {
+    background-color: var(--neutral-0);
+    color: var(--neutral-900);
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+.btn:hover,
+.remove:hover {
+    background-color: var(--red-400);
+    color: var(--neutral-0);
+    cursor: pointer;
+}
+
+.btn:focus,
+.remove:active {
+    background-color: var(--red-700);
+    color: var(--neutral-0);
+}
+
+.container .main .extensions-cards {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 1rem;
+    align-items: center;
+}
+
+.container .main .extensions-cards .card {
+    width: 32%;
+    height: max-content;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--neutral-0);
+
+}
+
+.container .main .extensions-cards .card .description {
+    display: flex;
+    color: var(--neutral-900);
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.container .main .extensions-cards .card .description img {
+    width: 46px;
+    margin-right: 10px;
+}
+
+.container .main .extensions-cards .card .description h3 {
+    font-size: smaller;
+    margin-bottom: 5px;
+}
+
+.container .main .extensions-cards .card .description p {
+    font-size: 12px;
+}
+
+.container .main .extensions-cards .action-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .main .extensions-cards .action-btns .check {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.check+.slider {
+    display: inline-block;
+    width: 32px;
+    height: 19px;
+    background-color: var(--neutral-300);
+    border-radius: 19px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.check+.slider::before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    left: 2px;
+    top: 2px;
+    background-color: var(--neutral-100);
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.check:checked+.slider {
+    background-color: var(--red-700);
+    /* red when checked */
+}
+
+.check:checked+.slider::before {
+    transform: translateX(14px);
+}
+
+.remove {
+    border: 1px solid var(--neutral-300);
 }
